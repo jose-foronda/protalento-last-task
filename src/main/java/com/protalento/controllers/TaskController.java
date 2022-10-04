@@ -1,6 +1,7 @@
 package com.protalento.controllers;
 
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -120,7 +121,7 @@ public class TaskController {
 	public ResponseEntity<Object> Listar() {
 		logger.info("listing Elements...");
 		return ResponseEntity.status(HttpStatus.OK)
-				.body(taskImp.listAll().stream().map(e -> TaskDTO.getTaskDTO(e)).toList());
+				.body(taskImp.listAll().stream().map(e -> TaskDTO.getTaskDTO(e)).collect(Collectors.toList()) );
 	}
 
 }
