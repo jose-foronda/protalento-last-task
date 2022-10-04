@@ -24,8 +24,8 @@ public final class UserMapper implements RowMapper<User> {
 
 			int id = rs.getInt("id");
 			String email = rs.getString("email");
-			String password = rs.getString("password");
-			logger.info("ResultSet result---> + " + "id = " + id + ", email= " + email + ", password= " + password);
+			String password = rs.getString("passwd");
+			logger.info("ResultSet result---> + " + "id = " + id + ", email= " + email + ", passwd= " + password);
 			return User.builder().id(id).email(email).password(password).build();
 		} catch (Exception e) {
 			logger.error("Error trying to map a ResultSet row to a User object. " + e);

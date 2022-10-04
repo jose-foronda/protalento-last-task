@@ -25,7 +25,7 @@ public class UserImp implements DAO<User, String> {
 
 	@Override
 	public User findById(String email) {
-		String sql = "SELECT id, email, password FROM protalento_final_task.users where email <=> ?";
+		String sql = "SELECT id, email, passwd FROM protalento_final_task.users where email <=> ?";
 
 		try {
 			return jdbcTemplate.queryForObject(sql, new UserMapper(), email);
@@ -38,7 +38,7 @@ public class UserImp implements DAO<User, String> {
 
 	@Override
 	public Boolean insert(User user) {
-		String sql = "INSERT INTO protalento_final_task.users (email, password) VALUES (?, ?)";
+		String sql = "INSERT INTO protalento_final_task.users (email, passwd) VALUES (?, ?)";
 		PreparedStatementCreatorFactory preparedStatementCreatorFactory = new PreparedStatementCreatorFactory(sql,
 				Types.VARCHAR, Types.VARCHAR);
 
@@ -78,7 +78,7 @@ public class UserImp implements DAO<User, String> {
 
 	@Override
 	public List<User> listAll() {
-		String query = "SELECT id, email, password FROM protalento_final_task.users";
+		String query = "SELECT id, email, passwd FROM protalento_final_task.users";
 
 		List<User> userList = jdbcTemplate.query(query, new UserMapper());
 		logger.info("Listing all tasks: " + userList);
