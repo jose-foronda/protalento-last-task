@@ -23,7 +23,10 @@ public class DataSourceSubclassGenerator {
 		String user_db = System.getenv("user_db");
 		String password_db = System.getenv("password_db");
 		
-		logger.info("Environment Variable is... : " +  System.getenv("driver_db"));
+		logger.info("Environment Variable driver_db is... : " +  System.getenv("driver_db"));
+		logger.info("Environment Variable url_db is... : " +  System.getenv("url_db"));
+		logger.info("Environment Variable user_db is... : " +  System.getenv("user_db"));
+		logger.info("Environment Variable password_db is... : " +  System.getenv("password_db"));
 
 		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource(url_db, user_db, password_db);
 		driverManagerDataSource.setDriverClassName(driver_db);
