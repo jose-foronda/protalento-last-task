@@ -109,4 +109,10 @@ public class UsuariosController {
 		logger.info("listing Elements..."); 
 		return ResponseEntity.status(HttpStatus.OK).body(usuarioImp.listAll());
 	}
+	
+	@GetMapping(path = "/ping")
+	public ResponseEntity<Object> ping() {
+		logger.info("pong...");
+		return ResponseEntity.ok("pong");
+	}
 }
