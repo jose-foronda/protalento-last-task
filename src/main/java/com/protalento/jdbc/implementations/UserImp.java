@@ -78,7 +78,7 @@ public class UserImp implements DAO<User, String> {
 
 	@Override
 	public List<User> listAll() {
-		String query = "SELECT id, email, passwd FROM protalento_final_task.users";
+		String query = "SELECT id, email, passwd FROM users";
 
 		List<User> userList = jdbcTemplate.query(query, new UserMapper());
 		logger.info("Listing all tasks: " + userList);
