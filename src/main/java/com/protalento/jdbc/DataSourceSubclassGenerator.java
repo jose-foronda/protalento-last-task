@@ -29,11 +29,13 @@ public class DataSourceSubclassGenerator {
 		int port_db = Integer.valueOf(System.getenv("port_db"));
 		String DATABASE_URL = System.getenv("DATABASE_URL");
 
-		logger.info("Environment Variable driver_db is... : " + System.getenv("driver_db"));
-		logger.info("Environment Variable url_db is... : " + System.getenv("url_db"));
-		logger.info("Environment Variable user_db is... : " + System.getenv("user_db"));
-		logger.info("Environment Variable password_db is... : " + System.getenv("password_db"));
-		logger.info("Environment Variable DATABASE_URL is... : " + System.getenv("DATABASE_URL"));
+		logger.info("Environment Variable driver_db is... : " + driver_db);
+		logger.info("Environment Variable url_db is... : " + url_db);
+		logger.info("Environment Variable user_db is... : " + user_db);
+		logger.info("Environment Variable password_db is... : " + password_db);
+		logger.info("Environment Variable name_db is... : " + name_db);
+		logger.info("Environment Variable port_db is... : " + port_db);
+		logger.info("Environment Variable DATABASE_URL is... : " + DATABASE_URL);
 
 		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource(url_db, user_db, password_db);
 		// for local tests it worked returning driverManagerDataSource but with heroku
