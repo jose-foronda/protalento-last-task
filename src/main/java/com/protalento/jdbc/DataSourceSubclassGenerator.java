@@ -36,6 +36,8 @@ public class DataSourceSubclassGenerator {
 		logger.info("Environment Variable name_db is... : " + name_db);
 		logger.info("Environment Variable port_db is... : " + port_db);
 		logger.info("Environment Variable DATABASE_URL is... : " + DATABASE_URL);
+		logger.info("hardcoded password is equal to password EnvVar?... : "
+				+ password_db.equals("ce4f853b6b1caec7bac5611d9fbb1dfb65a0e4eaec1565eb0567b9f0630e46cf"));
 
 		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource(url_db, user_db, password_db);
 		// for local tests it worked returning driverManagerDataSource but with heroku
