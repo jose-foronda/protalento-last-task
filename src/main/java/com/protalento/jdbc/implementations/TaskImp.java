@@ -26,7 +26,7 @@ public class TaskImp implements DAO<Task, Integer> {
 
 	@Override
 	public Task findById(Integer id) {
-		String query = "SELECT users_id, id, titulo, descripcion, fecha_vencimiento FROM protalento_final_task.tasks where id <=> ?";
+		String query = "SELECT users_id, id, titulo, descripcion, fecha_vencimiento FROM tasks where id = ?";
 		Task taskRecovered;
 
 		try {
@@ -42,7 +42,7 @@ public class TaskImp implements DAO<Task, Integer> {
 
 	@Override
 	public Boolean insert(Task task) {
-		String sql = "INSERT INTO protalento_final_task.tasks "
+		String sql = "INSERT INTO tasks "
 				+ "(users_id, titulo, descripcion, fecha_vencimiento) VALUES(?, ?, ?, ?)";
 
 		PreparedStatementCreatorFactory preparedStatementCreatorFactory = new PreparedStatementCreatorFactory(sql,
@@ -69,7 +69,7 @@ public class TaskImp implements DAO<Task, Integer> {
 
 	@Override
 	public Boolean update(Task task) {
-		String sql = "UPDATE protalento_final_task.tasks SET titulo= ?, descripcion= ?,"
+		String sql = "UPDATE tasks SET titulo= ?, descripcion= ?,"
 				+ " fecha_vencimiento= ? WHERE id= ?";
 
 		int updatedRows = jdbcTemplate.update(sql, task.getTitle(), task.getDescription(), task.getExpirationDate()
@@ -96,7 +96,7 @@ public class TaskImp implements DAO<Task, Integer> {
 	@Override
 	public Boolean delete(Task task) {
 
-		String sql = "DELETE FROM protalento_final_task.tasks WHERE users_id = ? and id= ?";
+		String sql = "DELETE FROM tasks WHERE users_id = ? and id= ?";
 
 		int deletedRows = jdbcTemplate.update(sql, task.getIdUser(), task.getId());
 
@@ -107,7 +107,7 @@ public class TaskImp implements DAO<Task, Integer> {
 
 	@Override
 	public List<Task> listAll() {
-		String query = "SELECT users_id, id, titulo, descripcion, fecha_vencimiento FROM protalento_final_task.tasks";
+		String query = "SELECT users_id, id, titulo, descripcion, fecha_vencimiento FROM tasks";
 
 		List<Task> taskList = jdbcTemplate.query(query, new TaskMapper());
 		logger.info("Listing all tasks: " + taskList);
