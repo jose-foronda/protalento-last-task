@@ -122,7 +122,7 @@ public class UsuarioImp implements DAO<Usuario, Integer> {
 	@Override
 	public List<Usuario> listAll() {
 		String query = "SELECT id, clave, nombre, usuario, correo, telefono, pagina, razon_social, area, calle, ciudad, codigo_postal, latitude, longitude\r\n"
-				+ "FROM protalento_final_task.usuarios;";
+				+ "FROM usuarios;";
 
 		List<Usuario> UsuarioList = jdbcTemplate.query(query, new UsuarioMapper());
 		logger.info("Listing all Usuarios: " + UsuarioList);
