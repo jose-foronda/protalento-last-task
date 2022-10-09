@@ -1,7 +1,10 @@
 package com.protalento.jdbc;
 
+import javax.sql.DataSource;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.postgresql.ds.PGSimpleDataSource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 public class DataSourceSubclassGenerator {
@@ -11,7 +14,7 @@ public class DataSourceSubclassGenerator {
 
 	}
 
-	public static DriverManagerDataSource getdriDriverManagerDataSource() {
+	public static DataSource getdriDriverManagerDataSource() {
 
 //		String driver_db = "org.mariadb.jdbc.Driver";
 //		String url_db = "jdbc:mariadb://localhost:3306/protalento_final_task";
@@ -32,7 +35,16 @@ public class DataSourceSubclassGenerator {
 		
 		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource(url_db, user_db, password_db);
 		driverManagerDataSource.setDriverClassName(driver_db);
+		
+		
+		PGSimpleDataSource pgSimpleDataSource = new PGSimpleDataSource();
+		pgSimpleDataSource.setDatabaseName("deg6u9e2n2h8kp");
+		pgSimpleDataSource.setPortNumbers(new int[] {5432});
+		pgSimpleDataSource.setPassword("ce4f853b6b1caec7bac5611d9fbb1dfb65a0e4eaec1565eb0567b9f0630e46cf");
+		pgSimpleDataSource.setUrl(url_db);
+		pgSimpleDataSource.setUser(user_db);
 
-		return driverManagerDataSource;
+//		return driverManagerDataSource;
+		return pgSimpleDataSource;
 	}
 }
