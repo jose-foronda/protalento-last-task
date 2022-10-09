@@ -25,7 +25,7 @@ public class UserImp implements DAO<User, String> {
 
 	@Override
 	public User findById(String email) {
-		String sql = "SELECT id, email, passwd FROM users where email <=> ?";
+		String sql = "SELECT id, email, passwd FROM users where email = ?";
 
 		try {
 			return jdbcTemplate.queryForObject(sql, new UserMapper(), email);
@@ -38,7 +38,7 @@ public class UserImp implements DAO<User, String> {
 
 	@Override
 	public Boolean insert(User user) {
-		String sql = "INSERT INTO protalento_final_task.users (email, passwd) VALUES (?, ?)";
+		String sql = "INSERT INTO users (email, passwd) VALUES (?, ?)";
 		PreparedStatementCreatorFactory preparedStatementCreatorFactory = new PreparedStatementCreatorFactory(sql,
 				Types.VARCHAR, Types.VARCHAR);
 
