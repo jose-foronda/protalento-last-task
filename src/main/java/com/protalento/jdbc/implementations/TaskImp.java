@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.sql.Types;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -63,7 +64,13 @@ public class TaskImp implements DAO<Task, Integer> {
 
 		boolean inserted = insertedRows == 1;
 		logger.info("was inserted? :" + inserted + ". " + task);
-		task.setId( ((BigInteger)generatedKeyHolder.getKeys().get("insert_id")).intValue()); 
+		
+		Map<String, Object> keyAndValue = generatedKeyHolder.getKeys();
+		logger.info("generated keys are:" + keyAndValue);
+		
+		// using heroku it gives me the key as "id"
+		task.setId( ((BigInteger)generatedKeyHolder.getKeys().get("id")).intValue()); 
+		logger.info("insertion with generate key? :" + inserted + ". " + task);
 		return inserted;
 	}
 
