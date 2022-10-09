@@ -72,13 +72,13 @@ public class UsuarioImp implements DAO<Usuario, Integer> {
 
 		boolean inserted = insertedRows == 1;
 		logger.info("was inserted? :" + inserted + ". " + usuario);
-		
+
 		Map<String, Object> keyAndValue = generatedKeyHolder.getKeys();
-		logger.info("generated keys are:" +  keyAndValue);
-		
+		logger.info("generated keys are:" + keyAndValue);
+
 //		usuario.setId(((BigInteger) generatedKeyHolder.getKeys().get("insert_id")).intValue());
-		//using heroku it gives me the key as "id"
-		usuario.setId(((BigInteger) generatedKeyHolder.getKeys().get("id")).intValue());
+		// using heroku it gives me the key as "id"
+		usuario.setId((Integer) generatedKeyHolder.getKeys().get("id"));
 		logger.info("insertion with generate key? :" + inserted + ". " + usuario);
 		return inserted;
 	}
@@ -88,11 +88,11 @@ public class UsuarioImp implements DAO<Usuario, Integer> {
 		String sql = "UPDATE usuarios\r\n"
 				+ "SET clave= ?, nombre= ?, usuario= ?, correo= ?, telefono= ?, pagina= ?, razon_social= ?, area= ?, calle= ?, ciudad= ?, codigo_postal= ?, latitude= ?, longitude= ?\r\n"
 				+ "WHERE id = ?";
-		
+
 		Company company = usuario.getCompany();
 		Direccion direccion = usuario.getDireccion();
 		Geolocalizacion geolocalizacion = direccion.getGeolocalizacion();
-		
+
 		int updatedRows = jdbcTemplate.update(sql, usuario.getClave(), usuario.getNombre(), usuario.getUsuario(),
 				usuario.getCorreo(), usuario.getTelefono(), usuario.getPagina(), company.getRazon_social(),
 				company.getArea(), direccion.getCalle(), direccion.getCiudad(), direccion.getCodigo_postal(),
@@ -154,11 +154,10 @@ public class UsuarioImp implements DAO<Usuario, Integer> {
 //		String coded = Base64EncoderDecoder.operateBase64Schema(String.valueOf(random10DigitsValue),
 //				Base64Schema.ENCODE);
 //		System.out.println("value= " + random10DigitsValue + ". coded = " + coded);
-		
+
 		UsuarioImp usuarioImp = new UsuarioImp();
-		
-		
-		/** Inserting **/ 
+
+		/** Inserting **/
 //		Company company = Company.builder().razon_social("octavio robleto SA").area("Sistemas")
 //				.build();
 //
@@ -170,12 +169,11 @@ public class UsuarioImp implements DAO<Usuario, Integer> {
 //
 //		Usuario user = Usuario.builder().nombre("octavio robleto T").usuario("octaviorobleto").correo("octaviorobleto@gmail.com")
 //				.telefono("91150124479").pagina("https://octaviorobleto.com/").company(company).direccion(direccion).build();
-	
-		//inserting element
+
+		// inserting element
 //		usuarioImp.save(user);
-		
-		
-		/** Updating **/ 
+
+		/** Updating **/
 //		Company company = Company.builder().razon_social("octavio robleto SA").area("Sistemas")
 //				.build();
 //
@@ -189,9 +187,8 @@ public class UsuarioImp implements DAO<Usuario, Integer> {
 //				.telefono("91150124479").pagina("https://octaviorobleto.com/").company(company).direccion(direccion).build();
 //		
 //		usuarioImp.save(user);
-		
-		
-		/** Deleting **/ 
+
+		/** Deleting **/
 //		Company company = Company.builder().razon_social("octavio robleto SA").area("Sistemas")
 //				.build();
 //
@@ -205,23 +202,21 @@ public class UsuarioImp implements DAO<Usuario, Integer> {
 //				.telefono("91150124479").pagina("https://octaviorobleto.com/").company(company).direccion(direccion).build();
 //		
 //		usuarioImp.delete(user);
-		
-		
-		/** Listing All **/ 
-		Company company = Company.builder().razon_social("octavio robleto SA").area("Sistemas")
-				.build();
 
-		Geolocalizacion geolocalizacion = Geolocalizacion.builder().latitude("-37.3159")
-				.longitude("81.1496").build();
+		/** Listing All **/
+		Company company = Company.builder().razon_social("octavio robleto SA").area("Sistemas").build();
 
-		Direccion direccion = Direccion.builder().calle("Simon Bolivar").ciudad("Bogota")
-				.codigo_postal("92998").geolocalizacion(geolocalizacion).build();
+		Geolocalizacion geolocalizacion = Geolocalizacion.builder().latitude("-37.3159").longitude("81.1496").build();
 
-		Usuario user = Usuario.builder().id(2).clave("MTczMjE5MzUyOQ==").nombre("octavio robleto T").usuario("octaviorobleto").correo("octaviorobleto@gmail.com")
-				.telefono("91150124479").pagina("https://octaviorobleto.com/").company(company).direccion(direccion).build();
-		
-		usuarioImp.listAll();		
-	
+		Direccion direccion = Direccion.builder().calle("Simon Bolivar").ciudad("Bogota").codigo_postal("92998")
+				.geolocalizacion(geolocalizacion).build();
+
+		Usuario user = Usuario.builder().id(2).clave("MTczMjE5MzUyOQ==").nombre("octavio robleto T")
+				.usuario("octaviorobleto").correo("octaviorobleto@gmail.com").telefono("91150124479")
+				.pagina("https://octaviorobleto.com/").company(company).direccion(direccion).build();
+
+		usuarioImp.listAll();
+
 	}
 
 }
