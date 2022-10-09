@@ -25,7 +25,7 @@ public class UserImp implements DAO<User, String> {
 
 	@Override
 	public User findById(String email) {
-		String sql = "SELECT id, email, passwd FROM protalento_final_task.users where email <=> ?";
+		String sql = "SELECT id, email, passwd FROM users where email <=> ?";
 
 		try {
 			return jdbcTemplate.queryForObject(sql, new UserMapper(), email);
