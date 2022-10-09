@@ -24,7 +24,7 @@ public class DataSourceSubclassGenerator {
 		String driver_db = System.getenv("driver_db");
 		String url_db = System.getenv("url_db");
 		String user_db = System.getenv("user_db");
-		String password_db = System.getenv("password_db");
+		String password_db = "ce4f853b6b1caec7bac5611d9fbb1dfb65a0e4eaec1565eb0567b9f0630e46cf";//System.getenv("password_db");
 		String name_db = System.getenv("name_db");
 		int port_db = Integer.valueOf(System.getenv("port_db"));
 		String DATABASE_URL = System.getenv("DATABASE_URL");
@@ -46,14 +46,14 @@ public class DataSourceSubclassGenerator {
 
 		// Specifically for the connection with the PostgreSQL database located in
 		// Heroku
-		PGSimpleDataSource pgSimpleDataSource = new PGSimpleDataSource();
-		pgSimpleDataSource.setDatabaseName(name_db);
-		pgSimpleDataSource.setPortNumbers(new int[] { port_db });
-		pgSimpleDataSource.setPassword("ce4f853b6b1caec7bac5611d9fbb1dfb65a0e4eaec1565eb0567b9f0630e46cf");
-		pgSimpleDataSource.setUrl(url_db);
-		pgSimpleDataSource.setUser(user_db);
+//		PGSimpleDataSource pgSimpleDataSource = new PGSimpleDataSource();
+//		pgSimpleDataSource.setDatabaseName(name_db);
+//		pgSimpleDataSource.setPortNumbers(new int[] { port_db });
+//		pgSimpleDataSource.setPassword("ce4f853b6b1caec7bac5611d9fbb1dfb65a0e4eaec1565eb0567b9f0630e46cf");
+//		pgSimpleDataSource.setUrl(url_db);
+//		pgSimpleDataSource.setUser(user_db);
 
-//		return driverManagerDataSource;
-		return pgSimpleDataSource;
+		return driverManagerDataSource;
+//		return pgSimpleDataSource;
 	}
 }
