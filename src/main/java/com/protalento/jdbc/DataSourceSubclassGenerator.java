@@ -47,7 +47,7 @@ public class DataSourceSubclassGenerator {
 		PGSimpleDataSource pgSimpleDataSource = new PGSimpleDataSource();
 		pgSimpleDataSource.setDatabaseName(name_db);
 		pgSimpleDataSource.setPortNumbers(new int[] { port_db });
-		pgSimpleDataSource.setPassword(password_db);
+		pgSimpleDataSource.setPassword("ce4f853b6b1caec7bac5611d9fbb1dfb65a0e4eaec1565eb0567b9f0630e46cf");
 		pgSimpleDataSource.setUrl(url_db);
 		pgSimpleDataSource.setUser(user_db);
 
