@@ -69,7 +69,8 @@ public class TaskImp implements DAO<Task, Integer> {
 		logger.info("generated keys are:" + keyAndValue);
 		
 		// using heroku it gives me the key as "id"
-		task.setId( ((BigInteger)generatedKeyHolder.getKeys().get("id")).intValue()); 
+		//task.setId( ((BigInteger)generatedKeyHolder.getKeys().get("id")).intValue()); 
+		task.setId(((Integer)generatedKeyHolder.getKeys().get("id"))); 
 		logger.info("insertion with generate key? :" + inserted + ". " + task);
 		return inserted;
 	}
