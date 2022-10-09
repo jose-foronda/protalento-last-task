@@ -3,6 +3,7 @@ package com.protalento.usuarios.jdbc.implementations;
 import java.math.BigInteger;
 import java.sql.Types;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -72,11 +73,12 @@ public class UsuarioImp implements DAO<Usuario, Integer> {
 		boolean inserted = insertedRows == 1;
 		logger.info("was inserted? :" + inserted + ". " + usuario);
 		
-		logger.info("generated keys are:" +  generatedKeyHolder.getKeys());
- 
-		
+		Map<String, Object> keyAndValue = generatedKeyHolder.getKeys();
+		logger.info("generated keys are:" +  keyAndValue);
 		
 //		usuario.setId(((BigInteger) generatedKeyHolder.getKeys().get("insert_id")).intValue());
+		//using heroku it gives me the key as "id"
+		usuario.setId(((BigInteger) generatedKeyHolder.getKeys().get("id")).intValue());
 		logger.info("insertion with generate key? :" + inserted + ". " + usuario);
 		return inserted;
 	}
