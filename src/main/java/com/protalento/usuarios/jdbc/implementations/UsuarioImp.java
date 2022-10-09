@@ -30,7 +30,7 @@ public class UsuarioImp implements DAO<Usuario, Integer> {
 	@Override
 	public Usuario findById(Integer key) {
 		String sql = "SELECT id, clave, nombre, usuario, correo, telefono, pagina, razon_social, area, calle, ciudad, codigo_postal, latitude, longitude\r\n"
-				+ "FROM protalento_final_task.usuarios where id <=> ?";
+				+ "FROM usuarios where id <=> ?";
 
 		try {
 			return jdbcTemplate.queryForObject(sql, new UsuarioMapper(), key);
@@ -43,7 +43,7 @@ public class UsuarioImp implements DAO<Usuario, Integer> {
 
 	@Override
 	public Boolean insert(Usuario usuario) {
-		String sql = "INSERT INTO protalento_final_task.usuarios\r\n"
+		String sql = "INSERT INTO usuarios\r\n"
 				+ "(clave, nombre, usuario, correo, telefono, pagina, razon_social, area, calle, ciudad, codigo_postal, latitude, longitude)\r\n"
 				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
@@ -77,7 +77,7 @@ public class UsuarioImp implements DAO<Usuario, Integer> {
 
 	@Override
 	public Boolean update(Usuario usuario) {
-		String sql = "UPDATE protalento_final_task.usuarios\r\n"
+		String sql = "UPDATE usuarios\r\n"
 				+ "SET clave= ?, nombre= ?, usuario= ?, correo= ?, telefono= ?, pagina= ?, razon_social= ?, area= ?, calle= ?, ciudad= ?, codigo_postal= ?, latitude= ?, longitude= ?\r\n"
 				+ "WHERE id <=> ?";
 		
@@ -110,7 +110,7 @@ public class UsuarioImp implements DAO<Usuario, Integer> {
 
 	@Override
 	public Boolean delete(Usuario usuario) {
-		String sql = "DELETE FROM protalento_final_task.usuarios WHERE id= ?";
+		String sql = "DELETE FROM usuarios WHERE id= ?";
 
 		int deletedRows = jdbcTemplate.update(sql, usuario.getId());
 
