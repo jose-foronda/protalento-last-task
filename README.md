@@ -18,6 +18,6 @@ Note:
   *There are requests (those requiring the path /tareas) that require "Basic Auth" so please use:
   
   
-  
+    Authentication Type is: Basic Auth
     Username is: user1@gmail.com
     Password is: User1.1234
