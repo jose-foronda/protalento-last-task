@@ -71,7 +71,12 @@ public class UsuarioImp implements DAO<Usuario, Integer> {
 
 		boolean inserted = insertedRows == 1;
 		logger.info("was inserted? :" + inserted + ". " + usuario);
-		usuario.setId(((BigInteger) generatedKeyHolder.getKeys().get("insert_id")).intValue());
+		
+		logger.info("generated keys are:" +  generatedKeyHolder.getKeys());
+ 
+		
+		
+//		usuario.setId(((BigInteger) generatedKeyHolder.getKeys().get("insert_id")).intValue());
 		logger.info("insertion with generate key? :" + inserted + ". " + usuario);
 		return inserted;
 	}
